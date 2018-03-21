@@ -8,6 +8,7 @@ const input = (props) => (
     <s.inputContainer>
       {props.title.length ? <s.label>{props.title}</s.label> : '' }
       <s.input
+        refs={props.name}
         name={props.name}
         type={props.type}
         value={props.content}

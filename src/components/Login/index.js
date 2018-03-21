@@ -19,14 +19,6 @@ class Login extends React.Component {
 		};
 	}
 
-	formToJSON = elements => [].reduce.call(elements, (data, element) => { 
-	  if(!element.type.includes('submit','button')) {; 
-		  data[element.name] = element.value;
-	  }
-	  return data;
-
-	}, {});
-
 	handleInput = e => this.validateField(e.target.name, e.target.value);
 
 	handleButton = e => this.submitForm(e);
@@ -34,7 +26,10 @@ class Login extends React.Component {
 	submitForm = (e) => {
 		e.preventDefault();
 
-		let formData = this.formToJSON(document.getElementById('loginform').elements);
+		let formData = {
+			'email' : this.state.email,
+			'password' : this.state.password,
+		}
 		
 		for (const fieldName of Object.keys(formData)) {
 	        this.validateField(fieldName, formData[fieldName], true);
@@ -52,7 +47,7 @@ class Login extends React.Component {
 
 	validateField = (name, value, setError = false) => {
 		const formErrors = this.state.formErrors;
-
+		
 		switch(name) {
 			case 'email':
 				formErrors.email = false;
@@ -124,7 +119,6 @@ const selector = (state) => {
 	const {session} = state;
 	
 	return {
-		token: session.user.token,
 		loading: session.user.loading,
 		errorMessage: session.user.errorMessage
 	}

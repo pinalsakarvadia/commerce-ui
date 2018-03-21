@@ -1,8 +1,7 @@
-let localWindowStorage = localStorage;
+let localWindowStorage;
 if (window && window.localStorage) {
   localWindowStorage = window.localStorage;
 }
-
 
 const localCache = {
   get: (key) => localWindowStorage.getItem(key),
@@ -11,7 +10,7 @@ const localCache = {
   clear: () => localWindowStorage.clear()
 }; 
 
-let sessionWindowStorage = sessionStorage;
+let sessionWindowStorage;
 if (window && window.sessionStorage) {
   sessionWindowStorage = window.sessionStorage;
 }

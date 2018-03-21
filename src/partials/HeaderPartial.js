@@ -6,7 +6,7 @@ import {Header} from '../components'
 
 class HeaderPartial extends React.PureComponent {
 	componentWillMount() {
-	    this.props.loadTokenFromCache();
+	    //this.props.loadTokenFromCache();
 	}
 
 	render() {
